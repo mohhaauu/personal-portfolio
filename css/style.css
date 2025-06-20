@@ -1,0 +1,50 @@
+/*Removes browser default spacing and ensures layout doesn’t break.*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: whitesmoke;
+    color: black;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+header {
+    text-align: center;
+    padding-top: 15px;
+}
+header h1 {
+    font-size: 3rem;
+    padding-top: 2px;
+}
+header hr {
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+}
+footer hr{
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+    margin-bottom: 1.8rem;
+}
+.bottom-nav {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 20px;
+}
+.bottom-nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+}
+.bottom-nav a:hover {
+    color: rgb(65, 65, 238);
+    transform: scale(1.2); 
+    transition: transform 0.3s ease, color 0.3s ease;
+}
