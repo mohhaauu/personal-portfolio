@@ -1,77 +1,106 @@
-/*Removes browser default spacing and ensures layout doesn’t break.*/
+/* Global Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Base Body Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: whitesmoke;
-    color: black;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f2f9ff; 
+  color: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-header {
-    text-align: center;
-    padding-top: 15px;
-}
-header h1 {
-    font-size: 3rem;
-    padding-top: 2px;
-}
-header hr {
-    width: 100%;
-    margin: 0 auto;
-    border: 1px solid lightgray;
-}
-footer hr{
-    width: 100%;
-    margin: 0 auto;
-    border: 1px solid lightgray;
-    margin-bottom: 1.8rem;
-}
-.bottom-nav {
-    display: flex;
-    justify-content: space-evenly;
-    padding-bottom: 20px;
-}
-.bottom-nav a {
-    text-decoration: none;
-    color: black;
-    font-size: 1.2rem;
-}
-.bottom-nav a:hover {
-    color: rgb(65, 65, 238);
-    transform: scale(1.2); 
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-main.content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;;
 
+/* Header Styles */
+header {
+  text-align: center;
+  padding-top: 20px;
+  background-color: #ffffff;
+  padding-bottom: 10px;
 }
+
+header h1 {
+  font-size: 3rem;
+  color: #007acc; /* blue accent */
+}
+
+header hr {
+  width: 90%;
+  margin: 10px auto 0;
+  border: 1px solid #cce6ff;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #ffffff;
+  padding-top: 10px;
+}
+
+footer hr {
+  width: 90%;
+  margin: 0 auto 1.8rem;
+  border: 1px solid #cce6ff;
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding-bottom: 20px;
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: #007acc;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.bottom-nav a:hover {
+  color: #005f99;
+  transform: scale(1.1);
+}
+
+/* Main Content - Home */
+main.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2rem 4rem;
+  flex: 1;
+}
+
+/* Left and Right Split */
 .left-side, .right-side {
-    width: 60%;
+  width: 50%;
 }
-.left-side img{
-    width: 70%;
-    height: auto;
-    border-radius: 20px;
-    margin-left: 100px;
+
+.left-side img {
+  width: 70%;
+  height: auto;
+  border-radius: 20px;
+  margin-left: 100px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 .right-side h2 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #004d80;
 }
 
 .right-side p {
-    font-size: 1.3rem;
-    line-height: 1.4;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #333;
 }
+
+/* Social Icons */
 .social-icons {
   margin-top: 2rem;
 }
@@ -79,18 +108,72 @@ main.content {
 .social-icons a {
   margin-right: 15px;
   font-size: 2rem;
-  color: black;
-  text-decoration: none;
-}
-
-.fa-linkedin {
   color: #0077b5;
-}
-
-.social-icons a i {
+  text-decoration: none;
   transition: transform 0.3s ease;
+}
+.fa-github {
+  color: black;
+}
+.social-icons a:hover .fa-github {
+    color: black;
+}
+.social-icons a i {
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-icons a:hover i {
   transform: scale(1.5);
+  color: #005f99;
+}
+
+/* About Page Hover Box */
+.hover-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65%;
+  padding: 2rem;
+  background-color: #ffffff;
+  border: 2px solid #cce6ff;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.hover-container p {
+  font-size: 1.3rem;
+  color: #1a1a1a;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Hover Text Swap */
+.hover-text {
+  display: none;
+}
+
+.hover-container:hover .default-text {
+  display: none;
+}
+
+.hover-container:hover .hover-text {
+  display: block;
+}
+
+/* Shake Animation for Default Text */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.default-text {
+  animation: shake 1.5s infinite;
+  display: block;
+  color: #007acc;
+  font-weight: 600;
 }
