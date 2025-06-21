@@ -73,15 +73,24 @@ main.content {
     line-height: 1.4;
 }
 .social-icons {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
+
 .social-icons a {
-    margin-right: 15px;
-    font-size: 2rem;
-    color: black;
-    transition: color 0.3s ease, transform 0.3s ease;
+  margin-right: 15px;
+  font-size: 2rem;
+  color: black;
+  text-decoration: none;
 }
-.social-icons a:hover {
-    color: rgb(65, 65, 238);
-    transform: scale(1.2);
+
+.fa-linkedin {
+  color: #0077b5;
+}
+
+.social-icons a i {
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover i {
+  transform: scale(1.5);
 }
