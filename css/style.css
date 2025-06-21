@@ -64,11 +64,24 @@ main.content {
     margin-left: 100px;
 }
 .right-side h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 .right-side p {
-  font-size: 1.3rem;
-  line-height: 1.4;
+    font-size: 1.3rem;
+    line-height: 1.4;
+}
+.social-icons {
+    margin-top: 2rem;
+}
+.social-icons a {
+    margin-right: 15px;
+    font-size: 2rem;
+    color: black;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-icons a:hover {
+    color: rgb(65, 65, 238);
+    transform: scale(1.2);
 }
