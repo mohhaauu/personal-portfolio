@@ -6,18 +6,108 @@
   <title>Resume</title>
   <link rel="stylesheet" href="../css/style.css" />
 </head>
-<body class="resume-page">
+<body>
   <header>
     <h1>Resume</h1>
-    <hr/>
+    <hr />
   </header>
 
-  <main class="content">
-    <!-- main Resume section content here -->
+  <main class="resume-container">
+    <div class="sidebar">
+      <button class="tab-btn active" data-tab="experience">Experience</button>
+      <button class="tab-btn" data-tab="education">Education</button>
+      <button class="tab-btn" data-tab="skills">Skills</button>
+    </div>
+
+    <div class="tab-content">
+      <!-- Experience -->
+      <div id="experience" class="tab-panel active">
+        <div class="resume-card">
+          <h3>Computer Sciences & Information Systems Student Assistant</h3>
+          <p class="company">North-West University <span>· Mar 2024 – Present</span></p>
+          <ul>
+            <li>Provided technical guidance to over 100 students.</li>
+            <li>Supervised class assessments ensuring fairness.</li>
+            <li>Marked and submitted results 100% on time.</li>
+          </ul>
+        </div>
+
+        <div class="resume-card">
+          <h3>Java Developer Intern</h3>
+          <p class="company">InternCareer <span>· Jul 2024</span></p>
+          <ul>
+            <li>Built secure online exam system using Java and Oracle DB.</li>
+            <li>Implemented auth and auto grading.</li>
+            <li>Documented system functionality for scalability.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div id="education" class="tab-panel">
+        <div class="resume-card">
+          <h3>BSc Honours in Computer Science & IT</h3>
+          <p class="company">North-West University <span>· Jan 2025 – Nov 2025</span></p>
+        </div>
+
+        <div class="resume-card">
+          <h3>BSc in Information Technology · GPA: 77</h3>
+          <p class="company">North-West University <span>· Feb 2022 – Nov 2024</span></p>
+        </div>
+
+        <div class="resume-card">
+          <h3>National Senior Certificate · GPA: 62</h3>
+          <p class="company">Afrikaanse Hoërskool Sasolburg <span>· Jan 2017 – Dec 2021</span></p>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div id="skills" class="tab-panel">
+        <div class="skills-section">
+          <h3>Technical Skills</h3>
+          <div class="skill">
+            <div class="skill-name">Full-Stack Development</div>
+            <div class="skill-bar"><div class="skill-bar-fill" style="width: 90%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-name">REST APIs, Git/GitHub, SQL/NoSQL</div>
+            <div class="skill-bar"><div class="skill-bar-fill" style="width: 85%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-name">Testing & Debugging (Postman, Swagger)</div>
+            <div class="skill-bar"><div class="skill-bar-fill" style="width: 75%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-name">Cloud & BI Tools (Azure, Power BI)</div>
+            <div class="skill-bar"><div class="skill-bar-fill" style="width: 70%"></div></div>
+          </div>
+        </div>
+
+        <div class="skills-section">
+          <h3>Soft Skills</h3>
+          <div class="skill">
+            <div class="skill-name">Problem Solving & Time Management</div>
+            <div class="skill-bar"><div class="skill-bar-fill" style="width: 85%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-name">Team Collaboration & Leadership</div>
+            <div class="skill-bar"><div class="skill-bar-fill" style="width: 80%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-name">Communication</div>
+            <div class="skill-bar"><div class="skill-bar-fill" style="width: 75%"></div></div>
+          </div>
+        </div>
+
+        <div class="cv-btn">
+          <a href="../assets/docs/MohauLiphoko_CV.pdf" download>Download CV</a>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer>
-    <hr/>
+    <hr />
     <nav class="bottom-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About Me</a>
@@ -25,5 +115,22 @@
       <a href="contact.html">Contact Me</a>
     </nav>
   </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        panels.forEach(panel => panel.classList.remove('active'));
+        const target = btn.getAttribute('data-tab');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
 </body>
+
 </html>
