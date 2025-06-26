@@ -1,80 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projects</title>
   <link rel="stylesheet" href="../css/style.css" />
 </head>
-<body class="projects-page">
+<body>
+  <!-- Header -->
   <header>
     <h1>Projects</h1>
-    <hr>
+    <hr />
   </header>
 
-  <main class="projects-section">
-    <h2 class="projects-title">Latest <span>Projects</span></h2>
+  <!-- Main Projects Section -->
+  <main class="projects-wrapper">
+    <section class="project-card" id="project-card">
+      <!-- Dynamic content gets inserted here -->
+    </section>
 
-    <div class="project-slider">
-      <div class="project-card active">
-        <h3 class="project-number">01</h3>
-        <h2 class="project-name">Full Stack Project</h2>
-        <p class="project-description">
-          Student Konnekt Human Movement Science Management System Backend API is a Node.js application designed for managing user authentication, assignments, feedback, and submissions in a Human Movement Science Management System.
-        </p>
-        <p class="project-tools">Tech Stack: MERN</p>
-        <hr>
-      </div>
-
-      <div class="project-card">
-        <h3 class="project-number">02</h3>
-        <h2 class="project-name">AI Project</h2>
-        <p class="project-description">
-          This project performs binary sentiment classification on IMDB movie reviews using LSTM, Logistic Regression, and Naive Bayes models. It includes a Streamlit web app for interactive prediction and model comparison.
-        </p>
-        <p class="project-tools">Python, TensorFlow/Keras, Scikit-learn, Streamlit, Pandas, Matplotlib</p>
-        <hr>
-      </div>
-
-      <div class="project-card">
-        <h3 class="project-number">03</h3>
-        <h2 class="project-name">Stream Processing Project</h2>
-        <p class="project-description">
-          A real-time weather monitoring system that simulates and streams sensor data using Azure cloud services. It processes, analyzes, and visualizes live data from multiple regions.
-        </p>
-        <p class="project-tools">Python, Azure Event Hubs, Azure Stream Analytics, Azure Cosmos DB, Power BI</p>
-        <hr>
-      </div>
-
-      <div class="project-card">
-        <h3 class="project-number">04</h3>
-        <h2 class="project-name">Online Exam System</h2>
-        <p class="project-description">
-          A platform for creating, managing, and grading exams with instant result feedback for students and tools for teachers.
-        </p>
-        <p class="project-tools">Java, JavaFX, MySQL, JDBC, JUnit, IntelliJ IDEA</p>
-        <hr>
-      </div>
-
-      <div class="project-card">
-        <h3 class="project-number">05</h3>
-        <h2 class="project-name">Encryption Project</h2>
-        <p class="project-description">
-          Implements a variation of substitution table encryption using scrambled ASCII values and user-defined key to secure text.
-        </p>
-        <p class="project-tools">Python</p>
-        <hr>
-      </div>
-
-      <div class="project-navigation">
-        <button class="nav-arrow" id="prevBtn">&#8592;</button>
-        <button class="nav-arrow" id="nextBtn">&#8594;</button>
-      </div>
+    <!-- Arrows -->
+    <div class="project-controls">
+      <button id="prevBtn">&#8592;</button>
+      <span id="project-indicator">1 / 5</span>
+      <button id="nextBtn">&#8594;</button>
     </div>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <hr>
+    <hr />
     <nav class="bottom-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About Me</a>
@@ -84,26 +39,68 @@
   </footer>
 
   <script>
-    const cards = document.querySelectorAll('.project-card');
-    let current = 0;
+    const projects = [
+      {
+        number: "01",
+        title: "Full Stack Project - Student Konnekt",
+        description: "A Node.js backend for managing authentication, assignments, feedback, and submissions in a Human Movement Science system.",
+        tools: "Tech Stack: MERN"
+      },
+      {
+        number: "02",
+        title: "AI Project - Sentiment Classifier",
+        description: "Binary sentiment analysis on IMDB reviews using LSTM, Logistic Regression & Naive Bayes. Includes a Streamlit UI.",
+        tools: "Python, TensorFlow, Streamlit, Pandas, Matplotlib"
+      },
+      {
+        number: "03",
+        title: "Stream Processing - Weather System",
+        description: "Real-time sensor data simulation and visualization using Azure Stream Analytics, Cosmos DB & Power BI.",
+        tools: "Python, Azure Event Hubs, Stream Analytics, Power BI"
+      },
+      {
+        number: "04",
+        title: "Online Exam System",
+        description: "Teachers can create exams, students take them and get graded instantly. Includes secure login & instant results.",
+        tools: "Java, JavaFX, MySQL, JDBC, JUnit"
+      },
+      {
+        number: "05",
+        title: "Encryption Tool",
+        description: "Encrypts messages using scrambled ASCII values and user-defined keys. Includes reversible decryption.",
+        tools: "Python"
+      }
+    ];
 
-    function showCard(index) {
-      cards.forEach(card => card.classList.remove('active'));
-      cards[index].classList.add('active');
+    let currentProject = 0;
+
+    const projectCard = document.getElementById("project-card");
+    const indicator = document.getElementById("project-indicator");
+
+    function renderProject(index) {
+      const p = projects[index];
+      projectCard.innerHTML = `
+        <div class="card-number">Project ${p.number}</div>
+        <h2 class="card-title">${p.title}</h2>
+        <p class="card-desc">${p.description}</p>
+        <hr class="divider"/>
+        <p class="card-tools">${p.tools}</p>
+      `;
+      indicator.textContent = `${index + 1} / ${projects.length}`;
     }
 
-    document.getElementById('nextBtn').addEventListener('click', () => {
-      current = (current + 1) % cards.length;
-      showCard(current);
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      currentProject = (currentProject - 1 + projects.length) % projects.length;
+      renderProject(currentProject);
     });
 
-    document.getElementById('prevBtn').addEventListener('click', () => {
-      current = (current - 1 + cards.length) % cards.length;
-      showCard(current);
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      currentProject = (currentProject + 1) % projects.length;
+      renderProject(currentProject);
     });
 
-    // Initialize first card
-    showCard(current);
+    // Initial render
+    renderProject(currentProject);
   </script>
 </body>
 </html>
