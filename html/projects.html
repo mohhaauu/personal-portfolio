@@ -15,8 +15,8 @@
 
   <!-- Main Projects Section -->
   <main class="projects-wrapper">
-    <section class="project-card" id="project-card">
-      <!-- Dynamic content gets inserted here -->
+    <section class="project-container" id="project-container">
+      <!-- Dynamic content inserted here -->
     </section>
 
     <!-- Arrows -->
@@ -26,6 +26,7 @@
       <button id="nextBtn">&#8594;</button>
     </div>
   </main>
+
 
   <!-- Footer -->
   <footer>
@@ -39,68 +40,80 @@
   </footer>
 
   <script>
-    const projects = [
-      {
-        number: "01",
-        title: "Full Stack Project - Student Konnekt",
-        description: "A Node.js backend for managing authentication, assignments, feedback, and submissions in a Human Movement Science system.",
-        tools: "Tech Stack: MERN"
-      },
-      {
-        number: "02",
-        title: "AI Project - Sentiment Classifier",
-        description: "Binary sentiment analysis on IMDB reviews using LSTM, Logistic Regression & Naive Bayes. Includes a Streamlit UI.",
-        tools: "Python, TensorFlow, Streamlit, Pandas, Matplotlib"
-      },
-      {
-        number: "03",
-        title: "Stream Processing - Weather System",
-        description: "Real-time sensor data simulation and visualization using Azure Stream Analytics, Cosmos DB & Power BI.",
-        tools: "Python, Azure Event Hubs, Stream Analytics, Power BI"
-      },
-      {
-        number: "04",
-        title: "Online Exam System",
-        description: "Teachers can create exams, students take them and get graded instantly. Includes secure login & instant results.",
-        tools: "Java, JavaFX, MySQL, JDBC, JUnit"
-      },
-      {
-        number: "05",
-        title: "Encryption Tool",
-        description: "Encrypts messages using scrambled ASCII values and user-defined keys. Includes reversible decryption.",
-        tools: "Python"
-      }
-    ];
-
-    let currentProject = 0;
-
-    const projectCard = document.getElementById("project-card");
-    const indicator = document.getElementById("project-indicator");
-
-    function renderProject(index) {
-      const p = projects[index];
-      projectCard.innerHTML = `
-        <div class="card-number">Project ${p.number}</div>
-        <h2 class="card-title">${p.title}</h2>
-        <p class="card-desc">${p.description}</p>
-        <hr class="divider"/>
-        <p class="card-tools">${p.tools}</p>
-      `;
-      indicator.textContent = `${index + 1} / ${projects.length}`;
+  const projects = [
+    {
+      number: "01",
+      title: "Full Stack Project - Student Konnekt",
+      description: "A Node.js backend for managing authentication, assignments, feedback, and submissions in a Human Movement Science system.",
+      tools: "Tech Stack: MERN",
+      image: "../assets/images/Full%20Stack.jpg"
+    },
+    {
+      number: "02",
+      title: "AI Project - Sentiment Classifier",
+      description: "Binary sentiment analysis on IMDB reviews using LSTM, Logistic Regression & Naive Bayes. Includes a Streamlit UI.",
+      tools: "Python, TensorFlow, Streamlit, Pandas, Matplotlib",
+      image: "../assets/images/AI.jpg"
+    },
+    {
+      number: "03",
+      title: "Stream Processing - Weather System",
+      description: "Real-time sensor data simulation and visualization using Azure Stream Analytics, Cosmos DB & Power BI.",
+      tools: "Python, Azure Event Hubs, Stream Analytics, Power BI",
+      image: "../assets/images/Stream%20processing.jpg"
+    },
+    {
+      number: "04",
+      title: "Online Exam System",
+      description: "Teachers can create exams, students take them and get graded instantly. Includes secure login & instant results.",
+      tools: "Java, JavaFX, MySQL, JDBC, JUnit",
+      image: "../assets/images/Online%20Exam%20System.jpg"
+    },
+    {
+      number: "05",
+      title: "Encryption Project",
+      description: "Encrypts messages using scrambled ASCII values and user-defined keys. Includes reversible decryption.",
+      tools: "Python",
+      image: "../assets/images/Encryption.jpeg"
     }
+  ];
 
-    document.getElementById("prevBtn").addEventListener("click", () => {
-      currentProject = (currentProject - 1 + projects.length) % projects.length;
-      renderProject(currentProject);
-    });
+  let currentProject = 0;
 
-    document.getElementById("nextBtn").addEventListener("click", () => {
-      currentProject = (currentProject + 1) % projects.length;
-      renderProject(currentProject);
-    });
+  const container = document.getElementById("project-container");
+  const indicator = document.getElementById("project-indicator");
 
-    // Initial render
+  function renderProject(index) {
+    const p = projects[index];
+    container.innerHTML = `
+      <div class="project-card">
+        <div class="project-text">
+          <div class="card-number">Project ${p.number}</div>
+          <h2 class="card-title">${p.title}</h2>
+          <p class="card-desc">${p.description}</p>
+          <hr class="divider"/>
+          <p class="card-tools">${p.tools}</p>
+        </div>
+        <div class="project-image">
+          <img src="${p.image}" alt="${p.title} image" />
+        </div>
+      </div>
+    `;
+    indicator.textContent = `${index + 1} / ${projects.length}`;
+  }
+
+  document.getElementById("prevBtn").addEventListener("click", () => {
+    currentProject = (currentProject - 1 + projects.length) % projects.length;
     renderProject(currentProject);
-  </script>
+  });
+
+  document.getElementById("nextBtn").addEventListener("click", () => {
+    currentProject = (currentProject + 1) % projects.length;
+    renderProject(currentProject);
+  });
+
+  renderProject(currentProject);
+</script>
+
 </body>
 </html>
