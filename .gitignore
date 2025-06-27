@@ -1,2 +1,10 @@
-assets/docs/
-assets/images/
+# Ignore image files
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+*.webp
+
+# Ignore your CV (PDF file)
+MohauLiphoko_CV.pdf
