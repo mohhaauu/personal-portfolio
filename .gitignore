@@ -1,10 +1,8 @@
-# Ignore image files
-*.jpg
-*.jpeg
-*.png
-*.gif
-*.svg
-*.webp
-
-# Ignore your CV (PDF file)
-MohauLiphoko_CV.pdf
+# .gitignore
+full-stack.jpg
+ai-project.jpg
+stream-processing.jpg
+online-exam-system.jpg
+encryption-project.jpeg
+mohau-liphoko-cv.pdf
+profile-picture.jpg
